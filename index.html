@@ -75,6 +75,8 @@
             lastReadTime = now;
             document.getElementById("status").textContent = "讀取成功，UID: " + uid;
 
+          };
+
         } catch (error) {
           alert("NFC 掃描失敗：" + error);
         }
