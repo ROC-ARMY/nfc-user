@@ -37,7 +37,7 @@
     .info-container {
       margin-top: 20px;
       display: inline-flex;
-      gap: 20px; /* 狀態與 UID 之間的間距 */
+      gap: 20px;
     }
     .status, .uid {
       font-size: 20px;
@@ -46,22 +46,32 @@
       border-radius: 8px;
       min-width: 150px;
       box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    .status {
-      background-color: #ffffffaa;
-      color: #444;
+    .status.waiting {
+      background-color: #f0f0f0;
+      color: #555;
     }
-    .uid {
+    .status.success {
       background-color: #e6ffea;
       color: #006600;
+    }
+    .status.error {
+      background-color: #ffe6e6;
+      color: #cc0000;
+    }
+    .uid {
+      background-color: #ffffffaa;
+      color: #444;
     }
   </style>
 </head>
 <body>
   <h2>請將悠遊卡靠近手機感應區</h2>
   <button id="scanBtn">開始掃描 NFC</button>
+
   <div class="info-container">
-    <span id="status" class="status">尚未開始掃描</span>
+    <span id="status" class="status waiting">尚未開始掃描</span>
     <span id="uid" class="uid">UID</span>
   </div>
   <script>
