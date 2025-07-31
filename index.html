@@ -34,7 +34,7 @@
       background-color: #0056b3;
       transform: translateY(-2px);
     }
-    p {
+    span {
       margin-top: 25px;
       font-size: 20px;
       font-weight: bold;
@@ -51,8 +51,8 @@
 <body>
   <h2>請將悠遊卡靠近手機感應區</h2>
   <button id="scanBtn">開始掃描 NFC</button>
-  <p id="status1">尚未開始掃描</p>
-  <p id="status2">尚未開始掃描</p>
+  <span id="status1">尚未開始掃描</span>
+  <span id="status2"></span>
   <script>
     let lastUID = null;
     let lastReadTime = 0;
@@ -62,7 +62,7 @@
         try {
           const reader = new NDEFReader();
           await reader.scan();
-          document.getElementById("status").textContent = "等待感應卡片...";
+          document.getElementById("status1").textContent = "等待感應卡片...";
 
           reader.onreading = (event) => {
             const uid = event.serialNumber;
