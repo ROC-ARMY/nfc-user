@@ -112,7 +112,7 @@
       }
     });
       document.getElementById("copyBtn").addEventListener("click", () => {
-      const uidText = uidEl.textContent.replace("UID: ", "");
+      const uidText = document.getElementById("uid").textContent;
       navigator.clipboard.writeText(uidText).then(() => {
         alert("UID 已複製：" + uidText);
       }).catch(err => {
