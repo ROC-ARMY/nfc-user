@@ -75,11 +75,12 @@
   <div class="info-container">
     <span id="status" class="status waiting">尚未開始掃描</span>
     <span id="uid" class="uid">UID</span>
+    <button class="copy-btn" id="copyBtn">複製 UID</button>
   </div>
   <script>
     let lastUID = null;
     let lastReadTime = 0;
-    const debounceTime = 3000; // 3 秒內不重複送出
+    const debounceTime = 5000; // 3 秒內不重複送出
     document.getElementById("scanBtn").addEventListener("click", async () => {
       if ("NDEFReader" in window) {
         try {
@@ -109,6 +110,14 @@
       } else {
         alert("此瀏覽器不支援 Web NFC（請用 Android Chrome）");
       }
+    });
+      document.getElementById("copyBtn").addEventListener("click", () => {
+      const uidText = uidEl.textContent.replace("UID: ", "");
+      navigator.clipboard.writeText(uidText).then(() => {
+        alert("UID 已複製：" + uidText);
+      }).catch(err => {
+        alert("複製失敗：" + err);
+      });
     });
   </script>
 </body>
